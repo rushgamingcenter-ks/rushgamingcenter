@@ -5,7 +5,50 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Rezervo - Gaming Center</title>
 <link rel="stylesheet" href="style.css">
-</head>
+</head> 
+  <script>
+function dergoWhatsApp() {
+
+    const emri = document.querySelector('input[placeholder="Shkruaj emrin"]').value;
+    const telefoni = document.querySelector('input[placeholder="+383 xx xxx xxx"]').value;
+    const sherbimi = document.querySelector('select').value;
+    const dataOra = document.querySelector('input[type="datetime-local"]').value;
+
+    if (!emri || !telefoni || !dataOra) {
+        alert("Ju lutem plotësoni të gjitha fushat.");
+        return;
+    }
+
+    const data = new Date(dataOra);
+
+    const dataFormatuar = data.toLocaleDateString('sq-AL');
+    const oraFormatuar = data.toLocaleTimeString('sq-AL', {
+        hour: '2-digit',
+        minute: '2-digit'
+    });
+
+    const mesazhi =
+`🎮 *RusH Gaming Center - Rezervim*
+
+👤 Emri: ${emri}
+📱 Telefoni: ${telefoni}
+🎮 Shërbimi: ${sherbimi}
+📅 Data: ${dataFormatuar}
+⏰ Ora: ${oraFormatuar}
+
+Ju lutem konfirmoni rezervimin.`;
+
+    const numriWhatsApp = "+38345611015";
+
+    const url =
+        "https://wa.me/" +
+        numriWhatsApp +
+        "?text=" +
+        encodeURIComponent(mesazhi);
+
+    window.open(url, "_blank");
+}
+</script>
 
 <body>
 
